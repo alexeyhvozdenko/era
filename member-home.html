@@ -29,22 +29,80 @@
     require ("_include/my-header.php");
 ?>
 <section class="member-home">
-    <div id="mySidenav" class="sidenav">
-        <span class="sidenav-heading">Members Area</span>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.html"><img src="img/m_1.gif" alt="">Inbox</a>
-        <a href="registr.html"><img src="img/m_2.gif" alt="">Sent Mail</a>
-        <a href="search.html"><img src="img/m_3.gif" alt="">Favorites List</a>
-        <a href="help.html"><img src="img/m_4.gif" alt="">Who's Interestedp</a>
-        <a href="index.html"><img src="img/m_5.gif" alt="">Block list</a>
-        <a href="registr.html"><img src="img/m_6.gif" alt="">Update Profile</a>
-        <a href="search.html"><img src="img/m_6.gif" alt="">Introduction letter</a>
-        <a href="help.html"><img src="img/m_7.gif" alt="">Upload/Edit Photo</a>
-        <a href="index.html"><img src="img/m_8.gif" alt="">Settingse</a>
-        <a href="registr.html"><img src="img/m_9.gif" alt="">View my profile!</a>
-        <a href="search.html"><img src="img/m_11.gif" alt="">Upgrade Membership</a>
-        <a href="help.html"><img src="img/m_10.gif" alt="">Sign Out</a>
+    <div class="row">
+        <div class="col-md-2">
+            <div id="mySidenav" class="sidenav1">
+                <span class="sidenav-heading">Members Area</span>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br>
+                <a href="index.html"><img src="img/m_1.gif" alt="">Inbox</a><br>
+                <a href="registr.html"><img src="img/m_2.gif" alt="">Sent Mail</a><br>
+                <a href="search.html"><img src="img/m_3.gif" alt="">Favorites List</a><br>
+                <a href="help.html"><img src="img/m_4.gif" alt="">Who's Interestedp</a><br>
+                <a href="index.html"><img src="img/m_5.gif" alt="">Block list</a><br>
+                <a href="registr.html"><img src="img/m_6.gif" alt="">Update Profile</a><br>
+                <a href="search.html"><img src="img/m_6.gif" alt="">Introduction letter</a><br>
+                <a href="help.html"><img src="img/m_7.gif" alt="">Upload/Edit Photo</a><br>
+                <a href="index.html"><img src="img/m_8.gif" alt="">Settingse</a><br>
+                <a href="registr.html"><img src="img/m_9.gif" alt="">View my profile!</a><br>
+                <a href="search.html"><img src="img/m_11.gif" alt="">Upgrade Membership</a><br>
+                <a href="help.html"><img src="img/m_10.gif" alt="">Sign Out</a><br>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-8">
+            <div class="member-home__area">
+                <h1 class="member-home-area__heading">
+                    My Account
+                </h1>
+                <div class="member-home-area__info">
+                    <h2 class="member-home-area-info__status">
+                        Member Status: <span class="member-home-area-info-status__free">Free member</span><a href="">Upgrade
+                        Membership</a>
+                    </h2>
+                    <div class="row">
+                        <div class="col-xs-3  col-sm-2 col-md-1">
+                            <div class="member-home-area-info__photo">
+                                <img src="img/nopic1.gif" alt="" class="member-home-area-info-photo__carently">
+                            </div>
+                        </div>
+                        <div class="col-xs-8 col-sm-10  col-md-11">
+                            <div class="member-home-area-info__about">
+                                <div class="member-home-area-info-about__detalis">
+                                    <ul class="member-home-area-info-about-detalis__list">
+                                        <li class="member-home-area-info-about-detalis-list__item">Username: <strong>prog9</strong>
+                                        </li>
+                                        <li class="member-home-area-info-about-detalis-list__item">id:
+                                            <strong>69373</strong></li>
+                                        <li class="member-home-area-info-about-detalis-list__item">City :
+                                            <strong>Nilko</strong></li>
+                                        <li class="member-home-area-info-about-detalis-list__item">Country: <strong>United
+                                            States</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="member-home-area-info-about__action">
+                                    <ul class="member-home-area-info-about-action__list">
+                                        <li class="member-home-area-info-about-action-list__item"><img src="img/m_1.gif"
+                                                                                                       alt=""> Your
+                                            inbox : <a
+                                                    href="">0</a></li>
+                                        <li class="member-home-area-info-about-action-list__item"><img src="img/m_3.gif"
+                                                                                                       alt=""> Your
+                                            favorites : <a
+                                                    href="">0</a></li>
+                                        <li class="member-home-area-info-about-action-list__item"><img src="img/m_4.gif"
+                                                                                                       alt=""> Who’s
+                                            interested Me :
+                                            <a href="">0</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
     </div>
+
 
 </section>
 <?

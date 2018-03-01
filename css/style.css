@@ -343,7 +343,7 @@ input[type=submit]{
     padding: 1px 3px;
 }
 .help-heading{
-    ont-size: 20px;
+    font-size: 20px;
     color: #51791A;
     font-weight: bold;
     text-align: center;
@@ -638,4 +638,45 @@ hr{
 .login-content-benefit-sig__list{
     padding: 0;
 }
-
+.member-home-area__heading{
+    font-size: 20px;
+    color: #51791A;
+    font-weight: bold;
+    text-align: center;
+}
+.member-home-area__info{
+    background: #EAF7D7;
+}
+.member-home-area-info__status{
+    text-align: center;
+}
+.member-home-area-info__photo{
+    border: 1px solid #AFD0E2;
+    padding: 5px;
+}
+.member-home-area-info-photo__carently{
+    width: 100%;
+}
+.member-home-area-info__about{
+    border: 1px solid #AFD0E2;
+    padding: 0;
+}
+.member-home-area-info-about__detalis{
+    background: #fff;
+}
+.member-home-area-info-about-detalis__list{
+    list-style: none;
+    margin:0;
+}
+.member-home-area-info-about-detalis-list__item{
+    margin: 5px;
+}
+.member-home-area-info-about-action__list{
+    list-style: none;
+    border-top: 1px solid #AFD0E2;
+    background: #E9F5FE;
+    margin:0;
+}
+.member-home-area-info-about-action-list__item{
+    margin:5px;
+}
