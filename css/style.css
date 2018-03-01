@@ -650,13 +650,8 @@ hr{
 .member-home-area-info__status{
     text-align: center;
 }
-.member-home-area-info__photo{
-    border: 1px solid #AFD0E2;
-    padding: 5px;
-}
-.member-home-area-info-photo__carently{
-    width: 100%;
-}
+
+
 .member-home-area-info__about{
     border: 1px solid #AFD0E2;
     padding: 0;
@@ -668,14 +663,13 @@ hr{
     list-style: none;
     margin:0;
 }
-.member-home-area-info-about-detalis-list__item{
-    margin: 5px;
-}
+
 .member-home-area-info-about-action__list{
     list-style: none;
     border-top: 1px solid #AFD0E2;
     background: #E9F5FE;
     margin:0;
+    padding: 0;
 }
 .member-home-area-info-about-action-list__item{
     margin:5px;
