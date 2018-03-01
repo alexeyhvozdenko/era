@@ -1,0 +1,197 @@
+<?
+session_start();
+require ("_include_files.php");
+
+$username = (isset ($_GET['username'])) ? htmlentities ($_GET['username']) : '';
+$pass = (isset ($_GET['password'])) ? htmlentities ($_GET['password']) : '';
+
+$logged_in = true;
+
+if (isset ($_GET['username']))
+{
+	$logged_in = false;
+	if ( $id = GetProfileIDByField ($username, 'username'))
+	{
+		if ($stored_pass = GetFieldValueByID ($id, 'pass') )
+		{
+			if (strlen($stored_pass) == strlen ($pass) && $stored_pass == $pass)
+			{
+				if ($step2_completed = GetFieldValueByID ($id, 'step2_completed') != 0)
+				{
+
+									$activated = GetFieldValueByID ($id, 'activated');
+									if ($activated != 1)
+									{
+										include ("_include/letters.php");
+										$welcome_result  = mysql_query ("SELECT username, original_language, sex, name, email, pass FROM profiles WHERE id=$id");
+										$to_row = mysql_fetch_assoc ($welcome_result);
+										$mail_body = LetterWelcomeLetter ($to_row['original_language'], $to_row['sex'], $to_row['username'], $to_row['email'], $to_row['pass'], $id);
+
+				$headers = "MIME-Version: 1.0\n";
+//	   $headers .= "Content-type: text/html; charset=".$lang_charset."\n";
+						$headers .= "From: {$lang_text_name_url} <{$lang_email_mail}>\n";
+$headers .= "Return-path: {$lang_email_mail}\n";
+$headers .= "X-Mailer: PHP Script from {$lang_text_name_url}\n";
+mail ($to_row['email'], $lang_mail_sub_welcome, $mail_body, $headers);
+
+header ("Location: signupdone.html");
+exit;
+}
+$logged_in = true;
+MemberStart ($id);
+}
+else
+{
+$_SESSION['cont_registration'] = true;
+$_SESSION['registration_id'] = $id;
+$_SESSION['time_registered'] = GetFieldValueByID ($id, 'time_registered');
+header ("Location: signup2.html");
+exit;
+}
+
+$page_extra='';
+$lang_id = GetFieldValueByID($id, 'original_language');
+if ($lang_id==1) $page_extra='/ru/';
+
+
+if ( isset ($_SESSION['back_page'] ) )
+{
+$back_page = $_SESSION['back_page'] ;
+unset ($_SESSION['back_page'] );
+header ("Location: $back_page");
+exit;
+}
+include('stat/update_online.php');
+if (isset ($_GET['PHPSESSID']))
+{
+header ("Location: ".$page_extra."member-home.html?PHPSESSID=" . session_id());
+exit;
+}
+header ("Location: ".$page_extra."member-home.html");
+exit;
+}
+}
+}
+} // trying to login
+
+
+$current_head_button = "login";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above  meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><?=$lang_members_login_title ?></title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1..2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<?
+    require ("_include/my-header.php");
+?>
+<section class="login">
+    <div class="container">
+        <div class="login-content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-md-offset-1">
+                    <form action="login.html" class="sig-in">
+                        <h1 class="sig-in__heading"><?=$lang_text_signin ?></h1>
+                        <div class="sig-in__group-form">
+                            <?=$lang_username ?>
+                            <input name="username" type="text" class="t13" id="username" ">
+                        </div>
+                        <div class="sig-in__group-form">
+                            <?=$lang_password ?>:
+                            <input name="password" type="password" class="t13" id="password">
+                        </div>
+                        <div class="sig-in__group-form">
+                            <input name="Submit3" type="submit" value="<?=$lang_enter ?>">
+                        </div>
+                        <div class="sig-in__group-form">
+                            <a href="forgotpassword.html">
+                                <?=$lang_forgot_password ?>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="login-content__benefits">
+                        <h1 class="login-content--benefitsp__heading">
+                            Benefits of Membership
+                        </h1>
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-offset-6">
+                                <ul class="login-content-benefit-sig__list">
+                                    <li class="login-content-benefit-sig-list__item">Search and view full, color, photo profiles of beautiful Members.</li>
+                                    <li class="login-content-benefit-sig-list__item">Receive e-mails from other members.</li>
+                                    <li class="login-content-benefit-sig-list__item">Post your Personal Profile information and photo album.</li>
+                                    <li class="login-content-benefit-sig-list__item">Send and receive winks to Members.</li>
+                                    <li class="login-content-benefit-sig-list__item">Bookmark member profiles and email them to friends.</li>
+                                    <li class="login-content-benefit-sig-list__item">Great chance to find your match!</li>
+                                </ul>
+                                <h2 class="login-content-benefit-sig__heading"><a href="registr.html">Join For Free!</a></h2>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="navbar" id="myNavbar">
+                <a href="index.html">Home</a>
+                <a href="registr.html">Join Now</a>
+                <a href="search.html">Search</a>
+                <a href="articles.html">Acticles</a>
+                <a href="help.html">Help&FFQ</a>
+                <a href="links.html">Links</a>
+                <a href="about-us.html">About Us</a>
+                <a href="contact-us.html">Contact us</a>
+                <a href="anti-scam.html">Anti-Scam Policy</a>
+                <a href="javascript:void(0);" class="icon" onclick="navigation()">&#9776;</a>
+
+            </div>
+            <p class="footer__copi">Copyright © 2003 - 2018 EraDating - Russian Brides. All rights reserved. In
+                Russian</p>
+            <p class="footer__copi">Bonex Trade LP 45 Rosehaugh Road, Inverness Inverness-Shire, Scotland IV3 8SW</p>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<script src="js/mynav.js"></script>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+</body>
+
+</html>

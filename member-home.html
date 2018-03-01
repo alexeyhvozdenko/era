@@ -22,10 +22,31 @@
 </head>
 
 <body>
+<div onclick="openNav()" class="fixed-nav">
+    <i class="fa fa-bars" style="font-size:36px"></i>
+</div>
 <?
     require ("_include/my-header.php");
 ?>
+<section class="member-home">
+    <div id="mySidenav" class="sidenav">
+        <span class="sidenav-heading">Members Area</span>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html"><img src="img/m_1.gif" alt="">Inbox</a>
+        <a href="registr.html"><img src="img/m_2.gif" alt="">Sent Mail</a>
+        <a href="search.html"><img src="img/m_3.gif" alt="">Favorites List</a>
+        <a href="help.html"><img src="img/m_4.gif" alt="">Who's Interestedp</a>
+        <a href="index.html"><img src="img/m_5.gif" alt="">Block list</a>
+        <a href="registr.html"><img src="img/m_6.gif" alt="">Update Profile</a>
+        <a href="search.html"><img src="img/m_6.gif" alt="">Introduction letter</a>
+        <a href="help.html"><img src="img/m_7.gif" alt="">Upload/Edit Photo</a>
+        <a href="index.html"><img src="img/m_8.gif" alt="">Settingse</a>
+        <a href="registr.html"><img src="img/m_9.gif" alt="">View my profile!</a>
+        <a href="search.html"><img src="img/m_11.gif" alt="">Upgrade Membership</a>
+        <a href="help.html"><img src="img/m_10.gif" alt="">Sign Out</a>
+    </div>
 
+</section>
 <?
     require ("_include/my-footer.php");
 ?>
